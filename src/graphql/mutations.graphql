@@ -38,3 +38,195 @@ mutation DeleteCar(
     updatedAt
   }
 }
+mutation CreateAppraisal(
+  $input: CreateAppraisalInput!
+  $condition: ModelAppraisalConditionInput
+) {
+  createAppraisal(input: $input, condition: $condition) {
+    id
+    name
+    photosCar {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photosDocs {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateAppraisal(
+  $input: UpdateAppraisalInput!
+  $condition: ModelAppraisalConditionInput
+) {
+  updateAppraisal(input: $input, condition: $condition) {
+    id
+    name
+    photosCar {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photosDocs {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteAppraisal(
+  $input: DeleteAppraisalInput!
+  $condition: ModelAppraisalConditionInput
+) {
+  deleteAppraisal(input: $input, condition: $condition) {
+    id
+    name
+    photosCar {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photosDocs {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreatePhoto(
+  $input: CreatePhotoInput!
+  $condition: ModelPhotoConditionInput
+) {
+  createPhoto(input: $input, condition: $condition) {
+    id
+    url
+    photosCar {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    photosDocs {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdatePhoto(
+  $input: UpdatePhotoInput!
+  $condition: ModelPhotoConditionInput
+) {
+  updatePhoto(input: $input, condition: $condition) {
+    id
+    url
+    photosCar {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    photosDocs {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeletePhoto(
+  $input: DeletePhotoInput!
+  $condition: ModelPhotoConditionInput
+) {
+  deletePhoto(input: $input, condition: $condition) {
+    id
+    url
+    photosCar {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    photosDocs {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

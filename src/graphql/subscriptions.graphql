@@ -29,3 +29,177 @@ subscription OnDeleteCar {
     updatedAt
   }
 }
+subscription OnCreateAppraisal {
+  onCreateAppraisal {
+    id
+    name
+    photosCar {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photosDocs {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateAppraisal {
+  onUpdateAppraisal {
+    id
+    name
+    photosCar {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photosDocs {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteAppraisal {
+  onDeleteAppraisal {
+    id
+    name
+    photosCar {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photosDocs {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreatePhoto {
+  onCreatePhoto {
+    id
+    url
+    photosCar {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    photosDocs {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdatePhoto {
+  onUpdatePhoto {
+    id
+    url
+    photosCar {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    photosDocs {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeletePhoto {
+  onDeletePhoto {
+    id
+    url
+    photosCar {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    photosDocs {
+      id
+      name
+      photosCar {
+        nextToken
+      }
+      photosDocs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

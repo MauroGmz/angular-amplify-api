@@ -5,3 +5,20 @@ type Car @model {
   patent: String!
 
 }
+
+
+type Appraisal @model
+{
+  id: ID!
+  name: String!
+  photosCar: [Photo] @connection(name: "CarPhoto")
+  photosDocs: [Photo] @connection(name: "DocPhoto")
+}
+
+type Photo @model
+{
+  id: ID!
+  url: String!
+  photosCar: Appraisal @connection(name: "CarPhoto")
+  photosDocs: Appraisal @connection(name: "DocPhoto")
+}
