@@ -1,13 +1,24 @@
 <div class="form-body">
-    <form autocomplete="off" [formGroup]="createFormAppraisal" (ngSubmit)="onCreate(createFormAppraisal.value)">
-      <div>
-        <label>Name: </label>
-        <input type="text" formControlName="name" autocomplete="off">
-      </div>
-      <div>
-        <label>URL: </label>
-        <input type="text" formControlName="url" autocomplete="off">
-      </div>
-      <button type="submit">Submit</button>
+    <form autocomplete="off" [formGroup]="createFormAppraisalName" (ngSubmit)="onCreateName(createFormAppraisalName.value)">
+        <div>
+            <label>Name: </label>
+            <input type="text" formControlName="name" autocomplete="off">
+        </div>
+        <button type="submit">Submit</button>
     </form>
-  </div>
+    <form autocomplete="off" [formGroup]="createFormAppraisalUrl" (ngSubmit)="onCreateUrl(createFormAppraisalUrl.value)">
+        <div>
+            <label>URL: </label>
+            <input type="text" formControlName="url" autocomplete="off">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<h1> NEW APPRAISSAL</h1>
+
+<p>{{ name }}</p>
+
+<div *ngFor="let photos of photosArray">
+    <div><h3>url: {{ photos.url }}</h3></div>
+</div>

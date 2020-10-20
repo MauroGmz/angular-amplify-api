@@ -14,7 +14,8 @@ import { Photo } from './../models/photo';
 })
 export class AppraisalComponent implements OnInit {
 
-  public createFormAppraisal: FormGroup;
+  public createFormAppraisalName: FormGroup;
+  public createFormAppraisalUrl: FormGroup;
 
   name: string;
   photosArray: Photo[] = [
@@ -28,15 +29,22 @@ export class AppraisalComponent implements OnInit {
   constructor(private api: APIService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.createFormAppraisal = this.fb.group({
-      'name': ['', Validators.required],
+    this.createFormAppraisalName = this.fb.group({
+      'name': ['', Validators.required]
+    });
+    this.createFormAppraisalUrl = this.fb.group({
       'url': ['', Validators.required]
     });
   }
 
-  public onCreate(E) {
-    console.log(E.name)
-    console.log(E.url)
+  public onCreateName(N) {
+    console.log(N.name);
+    this.name = N.name;
+  }
+
+  public onCreateUrl(U) {
+    console.log(U.url);
+    this.photosArray.push(U);
   }
 
 }
