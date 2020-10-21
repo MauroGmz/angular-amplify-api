@@ -15,10 +15,12 @@
     </form>
 </div>
 
-<h1> NEW APPRAISSAL</h1>
+<h1> NEW APPRAISAL</h1>
 
-<p>{{ name }}</p>
+<h3>name: {{ name }}</h3>
 
 <div *ngFor="let photos of photosArray">
-    <div><h3>url: {{ photos.url }}</h3></div>
+    <div><h4>url: {{ photos.url }}</h4></div>
 </div>
+
+<button (click)="addPhotosToNewAppraisal()">add new appraisal</button>

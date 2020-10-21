@@ -17,6 +17,10 @@ export class AppraisalComponent implements OnInit {
   public createFormAppraisalName: FormGroup;
   public createFormAppraisalUrl: FormGroup;
 
+  appraisal: Appraisal;
+  photoType: PhotoType;
+  photosCar: PhotoType[] = [];
+
   name: string;
   photosArray: Photo[] = [
     /*
@@ -26,7 +30,7 @@ export class AppraisalComponent implements OnInit {
     {url: "https://material.angular.io/assets/img/examples/shiba2.jpg"}
   */];
 
-  constructor(private api: APIService, private fb: FormBuilder) { }
+  constructor(private _api: APIService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.createFormAppraisalName = this.fb.group({
@@ -45,6 +49,35 @@ export class AppraisalComponent implements OnInit {
   public onCreateUrl(U) {
     console.log(U.url);
     this.photosArray.push(U);
+  }
+
+  addPhotosToNewAppraisal(){
+    for (let photo of this.photosArray) {
+      this.photoType = {
+        url: photo.url
+      }
+      this.photosCar.push(this.photoType);
+    }
+    this.onCreateAppraisal();
+  }
+
+  public onCreateAppraisal() {
+    this.appraisal = {
+      name: this.name,
+      photosCar: this.photosCar,
+      photosDocs: this.photosCar
+    }
+    this.saveAppraisal(this.appraisal);
+  }
+
+  async saveAppraisal(appraisal: Appraisal){
+    console.log(appraisal);
+    await this._api.CreateAppraisal(appraisal).then(event => {
+      console.log('item created!');
+    })
+    .catch(e => {
+      console.log('error creating appraisal...', e);
+    });
   }
 
 }
