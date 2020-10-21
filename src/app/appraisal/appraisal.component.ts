@@ -56,6 +56,7 @@ export class AppraisalComponent implements OnInit {
   addPhotosToNewAppraisal(){
     for (let photo of this.photosArray) {
       this.photoType = {
+        appraisalBID: this.appraisalID,
         url: photo.url
       }
       this.photosCar.push(this.photoType);
@@ -75,12 +76,28 @@ export class AppraisalComponent implements OnInit {
     await this._api.CreateAppraisalB(appraisal).then(event => {
       this.appraisalID = event.id;
       console.log(event.id)
-      console.log('item created!');
+      console.log('Appraisal created!');
       console.log("this is appraisalID variable: " + this.appraisalID);
+      this.addPhotoToAppraisal();
     })
     .catch(e => {
       console.log('error creating appraisal...', e);
     });
+  }
+
+  async addPhotoToAppraisal() {
+    for (let photo of this.photosArray) {
+      this.photoType = {
+        appraisalBID: this.appraisalID,
+        url: photo.url
+      }
+      await this._api.CreatePhotoB(this.photoType).then(event => {
+        console.log('Photo created!');
+      })
+      .catch(e => {
+        console.log('error creating Photo...', e);
+      });
+    }
   }
 
 }
