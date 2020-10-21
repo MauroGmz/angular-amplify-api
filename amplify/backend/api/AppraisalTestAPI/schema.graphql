@@ -22,3 +22,23 @@ type Photo @model
   photosCar: Appraisal @connection(name: "CarPhoto")
   photosDocs: Appraisal @connection(name: "DocPhoto")
 }
+
+type PhotoCar @model
+{
+  id: ID!
+  url: String!
+}
+
+type AppraisalB @model {
+  id: ID!
+  name: String!
+  photos: [PhotoB] @connection(keyName: "byAppraisalB", fields: ["id"])
+}
+
+type PhotoB @model
+  @key(name: "byAppraisalB", fields: ["appraisalBID", "url"]) {
+  id: ID!
+  appraisalBID: ID!
+  url: String!
+  appraisalB: AppraisalB @connection(fields: ["appraisalBID"])
+}

@@ -117,14 +117,60 @@ export type DeletePhotoInput = {
   id?: string | null;
 };
 
-export type ModelCarFilterInput = {
-  id?: ModelIDInput | null;
+export type CreatePhotoCarInput = {
+  id?: string | null;
+  url: string;
+};
+
+export type ModelPhotoCarConditionInput = {
+  url?: ModelStringInput | null;
+  and?: Array<ModelPhotoCarConditionInput | null> | null;
+  or?: Array<ModelPhotoCarConditionInput | null> | null;
+  not?: ModelPhotoCarConditionInput | null;
+};
+
+export type UpdatePhotoCarInput = {
+  id: string;
+  url?: string | null;
+};
+
+export type DeletePhotoCarInput = {
+  id?: string | null;
+};
+
+export type CreateAppraisalBInput = {
+  id?: string | null;
+  name: string;
+};
+
+export type ModelAppraisalBConditionInput = {
   name?: ModelStringInput | null;
-  description?: ModelStringInput | null;
-  patent?: ModelStringInput | null;
-  and?: Array<ModelCarFilterInput | null> | null;
-  or?: Array<ModelCarFilterInput | null> | null;
-  not?: ModelCarFilterInput | null;
+  and?: Array<ModelAppraisalBConditionInput | null> | null;
+  or?: Array<ModelAppraisalBConditionInput | null> | null;
+  not?: ModelAppraisalBConditionInput | null;
+};
+
+export type UpdateAppraisalBInput = {
+  id: string;
+  name?: string | null;
+};
+
+export type DeleteAppraisalBInput = {
+  id?: string | null;
+};
+
+export type CreatePhotoBInput = {
+  id?: string | null;
+  appraisalBID: string;
+  url: string;
+};
+
+export type ModelPhotoBConditionInput = {
+  appraisalBID?: ModelIDInput | null;
+  url?: ModelStringInput | null;
+  and?: Array<ModelPhotoBConditionInput | null> | null;
+  or?: Array<ModelPhotoBConditionInput | null> | null;
+  not?: ModelPhotoBConditionInput | null;
 };
 
 export type ModelIDInput = {
@@ -143,6 +189,26 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
+export type UpdatePhotoBInput = {
+  id: string;
+  appraisalBID?: string | null;
+  url?: string | null;
+};
+
+export type DeletePhotoBInput = {
+  id?: string | null;
+};
+
+export type ModelCarFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  patent?: ModelStringInput | null;
+  and?: Array<ModelCarFilterInput | null> | null;
+  or?: Array<ModelCarFilterInput | null> | null;
+  not?: ModelCarFilterInput | null;
+};
+
 export type ModelAppraisalFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
@@ -157,6 +223,31 @@ export type ModelPhotoFilterInput = {
   and?: Array<ModelPhotoFilterInput | null> | null;
   or?: Array<ModelPhotoFilterInput | null> | null;
   not?: ModelPhotoFilterInput | null;
+};
+
+export type ModelPhotoCarFilterInput = {
+  id?: ModelIDInput | null;
+  url?: ModelStringInput | null;
+  and?: Array<ModelPhotoCarFilterInput | null> | null;
+  or?: Array<ModelPhotoCarFilterInput | null> | null;
+  not?: ModelPhotoCarFilterInput | null;
+};
+
+export type ModelAppraisalBFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelAppraisalBFilterInput | null> | null;
+  or?: Array<ModelAppraisalBFilterInput | null> | null;
+  not?: ModelAppraisalBFilterInput | null;
+};
+
+export type ModelPhotoBFilterInput = {
+  id?: ModelIDInput | null;
+  appraisalBID?: ModelIDInput | null;
+  url?: ModelStringInput | null;
+  and?: Array<ModelPhotoBFilterInput | null> | null;
+  or?: Array<ModelPhotoBFilterInput | null> | null;
+  not?: ModelPhotoBFilterInput | null;
 };
 
 export type CreateCarMutation = {
@@ -393,6 +484,150 @@ export type DeletePhotoMutation = {
   updatedAt: string;
 };
 
+export type CreatePhotoCarMutation = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdatePhotoCarMutation = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeletePhotoCarMutation = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreateAppraisalBMutation = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateAppraisalBMutation = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteAppraisalBMutation = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreatePhotoBMutation = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdatePhotoBMutation = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeletePhotoBMutation = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type GetCarQuery = {
   __typename: "Car";
   id: string;
@@ -520,6 +755,102 @@ export type ListPhotosQuery = {
     } | null;
     photosDocs: {
       __typename: "Appraisal";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetPhotoCarQuery = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListPhotoCarsQuery = {
+  __typename: "ModelPhotoCarConnection";
+  items: Array<{
+    __typename: "PhotoCar";
+    id: string;
+    url: string;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetAppraisalBQuery = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListAppraisalBsQuery = {
+  __typename: "ModelAppraisalBConnection";
+  items: Array<{
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetPhotoBQuery = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListPhotoBsQuery = {
+  __typename: "ModelPhotoBConnection";
+  items: Array<{
+    __typename: "PhotoB";
+    id: string;
+    appraisalBID: string;
+    url: string;
+    appraisalB: {
+      __typename: "AppraisalB";
       id: string;
       name: string;
       createdAt: string;
@@ -756,6 +1087,150 @@ export type OnDeletePhotoSubscription = {
     } | null;
     photosDocs: {
       __typename: "ModelPhotoConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreatePhotoCarSubscription = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdatePhotoCarSubscription = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeletePhotoCarSubscription = {
+  __typename: "PhotoCar";
+  id: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreateAppraisalBSubscription = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdateAppraisalBSubscription = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeleteAppraisalBSubscription = {
+  __typename: "AppraisalB";
+  id: string;
+  name: string;
+  photos: {
+    __typename: "ModelPhotoBConnection";
+    items: Array<{
+      __typename: "PhotoB";
+      id: string;
+      appraisalBID: string;
+      url: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreatePhotoBSubscription = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdatePhotoBSubscription = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeletePhotoBSubscription = {
+  __typename: "PhotoB";
+  id: string;
+  appraisalBID: string;
+  url: string;
+  appraisalB: {
+    __typename: "AppraisalB";
+    id: string;
+    name: string;
+    photos: {
+      __typename: "ModelPhotoBConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -1147,6 +1622,294 @@ export class APIService {
     )) as any;
     return <DeletePhotoMutation>response.data.deletePhoto;
   }
+  async CreatePhotoCar(
+    input: CreatePhotoCarInput,
+    condition?: ModelPhotoCarConditionInput
+  ): Promise<CreatePhotoCarMutation> {
+    const statement = `mutation CreatePhotoCar($input: CreatePhotoCarInput!, $condition: ModelPhotoCarConditionInput) {
+        createPhotoCar(input: $input, condition: $condition) {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreatePhotoCarMutation>response.data.createPhotoCar;
+  }
+  async UpdatePhotoCar(
+    input: UpdatePhotoCarInput,
+    condition?: ModelPhotoCarConditionInput
+  ): Promise<UpdatePhotoCarMutation> {
+    const statement = `mutation UpdatePhotoCar($input: UpdatePhotoCarInput!, $condition: ModelPhotoCarConditionInput) {
+        updatePhotoCar(input: $input, condition: $condition) {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdatePhotoCarMutation>response.data.updatePhotoCar;
+  }
+  async DeletePhotoCar(
+    input: DeletePhotoCarInput,
+    condition?: ModelPhotoCarConditionInput
+  ): Promise<DeletePhotoCarMutation> {
+    const statement = `mutation DeletePhotoCar($input: DeletePhotoCarInput!, $condition: ModelPhotoCarConditionInput) {
+        deletePhotoCar(input: $input, condition: $condition) {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeletePhotoCarMutation>response.data.deletePhotoCar;
+  }
+  async CreateAppraisalB(
+    input: CreateAppraisalBInput,
+    condition?: ModelAppraisalBConditionInput
+  ): Promise<CreateAppraisalBMutation> {
+    const statement = `mutation CreateAppraisalB($input: CreateAppraisalBInput!, $condition: ModelAppraisalBConditionInput) {
+        createAppraisalB(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateAppraisalBMutation>response.data.createAppraisalB;
+  }
+  async UpdateAppraisalB(
+    input: UpdateAppraisalBInput,
+    condition?: ModelAppraisalBConditionInput
+  ): Promise<UpdateAppraisalBMutation> {
+    const statement = `mutation UpdateAppraisalB($input: UpdateAppraisalBInput!, $condition: ModelAppraisalBConditionInput) {
+        updateAppraisalB(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateAppraisalBMutation>response.data.updateAppraisalB;
+  }
+  async DeleteAppraisalB(
+    input: DeleteAppraisalBInput,
+    condition?: ModelAppraisalBConditionInput
+  ): Promise<DeleteAppraisalBMutation> {
+    const statement = `mutation DeleteAppraisalB($input: DeleteAppraisalBInput!, $condition: ModelAppraisalBConditionInput) {
+        deleteAppraisalB(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteAppraisalBMutation>response.data.deleteAppraisalB;
+  }
+  async CreatePhotoB(
+    input: CreatePhotoBInput,
+    condition?: ModelPhotoBConditionInput
+  ): Promise<CreatePhotoBMutation> {
+    const statement = `mutation CreatePhotoB($input: CreatePhotoBInput!, $condition: ModelPhotoBConditionInput) {
+        createPhotoB(input: $input, condition: $condition) {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreatePhotoBMutation>response.data.createPhotoB;
+  }
+  async UpdatePhotoB(
+    input: UpdatePhotoBInput,
+    condition?: ModelPhotoBConditionInput
+  ): Promise<UpdatePhotoBMutation> {
+    const statement = `mutation UpdatePhotoB($input: UpdatePhotoBInput!, $condition: ModelPhotoBConditionInput) {
+        updatePhotoB(input: $input, condition: $condition) {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdatePhotoBMutation>response.data.updatePhotoB;
+  }
+  async DeletePhotoB(
+    input: DeletePhotoBInput,
+    condition?: ModelPhotoBConditionInput
+  ): Promise<DeletePhotoBMutation> {
+    const statement = `mutation DeletePhotoB($input: DeletePhotoBInput!, $condition: ModelPhotoBConditionInput) {
+        deletePhotoB(input: $input, condition: $condition) {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeletePhotoBMutation>response.data.deletePhotoB;
+  }
   async GetCar(id: string): Promise<GetCarQuery> {
     const statement = `query GetCar($id: ID!) {
         getCar(id: $id) {
@@ -1377,6 +2140,195 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListPhotosQuery>response.data.listPhotos;
+  }
+  async GetPhotoCar(id: string): Promise<GetPhotoCarQuery> {
+    const statement = `query GetPhotoCar($id: ID!) {
+        getPhotoCar(id: $id) {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetPhotoCarQuery>response.data.getPhotoCar;
+  }
+  async ListPhotoCars(
+    filter?: ModelPhotoCarFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListPhotoCarsQuery> {
+    const statement = `query ListPhotoCars($filter: ModelPhotoCarFilterInput, $limit: Int, $nextToken: String) {
+        listPhotoCars(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            url
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListPhotoCarsQuery>response.data.listPhotoCars;
+  }
+  async GetAppraisalB(id: string): Promise<GetAppraisalBQuery> {
+    const statement = `query GetAppraisalB($id: ID!) {
+        getAppraisalB(id: $id) {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetAppraisalBQuery>response.data.getAppraisalB;
+  }
+  async ListAppraisalBs(
+    filter?: ModelAppraisalBFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListAppraisalBsQuery> {
+    const statement = `query ListAppraisalBs($filter: ModelAppraisalBFilterInput, $limit: Int, $nextToken: String) {
+        listAppraisalBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListAppraisalBsQuery>response.data.listAppraisalBs;
+  }
+  async GetPhotoB(id: string): Promise<GetPhotoBQuery> {
+    const statement = `query GetPhotoB($id: ID!) {
+        getPhotoB(id: $id) {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetPhotoBQuery>response.data.getPhotoB;
+  }
+  async ListPhotoBs(
+    filter?: ModelPhotoBFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListPhotoBsQuery> {
+    const statement = `query ListPhotoBs($filter: ModelPhotoBFilterInput, $limit: Int, $nextToken: String) {
+        listPhotoBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            appraisalBID
+            url
+            appraisalB {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListPhotoBsQuery>response.data.listPhotoBs;
   }
   OnCreateCarListener: Observable<OnCreateCarSubscription> = API.graphql(
     graphqlOperation(
@@ -1671,4 +2623,214 @@ export class APIService {
       }`
     )
   ) as Observable<OnDeletePhotoSubscription>;
+
+  OnCreatePhotoCarListener: Observable<
+    OnCreatePhotoCarSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreatePhotoCar {
+        onCreatePhotoCar {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnCreatePhotoCarSubscription>;
+
+  OnUpdatePhotoCarListener: Observable<
+    OnUpdatePhotoCarSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdatePhotoCar {
+        onUpdatePhotoCar {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnUpdatePhotoCarSubscription>;
+
+  OnDeletePhotoCarListener: Observable<
+    OnDeletePhotoCarSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeletePhotoCar {
+        onDeletePhotoCar {
+          __typename
+          id
+          url
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnDeletePhotoCarSubscription>;
+
+  OnCreateAppraisalBListener: Observable<
+    OnCreateAppraisalBSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateAppraisalB {
+        onCreateAppraisalB {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnCreateAppraisalBSubscription>;
+
+  OnUpdateAppraisalBListener: Observable<
+    OnUpdateAppraisalBSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateAppraisalB {
+        onUpdateAppraisalB {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnUpdateAppraisalBSubscription>;
+
+  OnDeleteAppraisalBListener: Observable<
+    OnDeleteAppraisalBSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteAppraisalB {
+        onDeleteAppraisalB {
+          __typename
+          id
+          name
+          photos {
+            __typename
+            items {
+              __typename
+              id
+              appraisalBID
+              url
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnDeleteAppraisalBSubscription>;
+
+  OnCreatePhotoBListener: Observable<OnCreatePhotoBSubscription> = API.graphql(
+    graphqlOperation(
+      `subscription OnCreatePhotoB {
+        onCreatePhotoB {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnCreatePhotoBSubscription>;
+
+  OnUpdatePhotoBListener: Observable<OnUpdatePhotoBSubscription> = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdatePhotoB {
+        onUpdatePhotoB {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnUpdatePhotoBSubscription>;
+
+  OnDeletePhotoBListener: Observable<OnDeletePhotoBSubscription> = API.graphql(
+    graphqlOperation(
+      `subscription OnDeletePhotoB {
+        onDeletePhotoB {
+          __typename
+          id
+          appraisalBID
+          url
+          appraisalB {
+            __typename
+            id
+            name
+            photos {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnDeletePhotoBSubscription>;
 }

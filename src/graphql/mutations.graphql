@@ -230,3 +230,162 @@ mutation DeletePhoto(
     updatedAt
   }
 }
+mutation CreatePhotoCar(
+  $input: CreatePhotoCarInput!
+  $condition: ModelPhotoCarConditionInput
+) {
+  createPhotoCar(input: $input, condition: $condition) {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdatePhotoCar(
+  $input: UpdatePhotoCarInput!
+  $condition: ModelPhotoCarConditionInput
+) {
+  updatePhotoCar(input: $input, condition: $condition) {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+mutation DeletePhotoCar(
+  $input: DeletePhotoCarInput!
+  $condition: ModelPhotoCarConditionInput
+) {
+  deletePhotoCar(input: $input, condition: $condition) {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateAppraisalB(
+  $input: CreateAppraisalBInput!
+  $condition: ModelAppraisalBConditionInput
+) {
+  createAppraisalB(input: $input, condition: $condition) {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateAppraisalB(
+  $input: UpdateAppraisalBInput!
+  $condition: ModelAppraisalBConditionInput
+) {
+  updateAppraisalB(input: $input, condition: $condition) {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteAppraisalB(
+  $input: DeleteAppraisalBInput!
+  $condition: ModelAppraisalBConditionInput
+) {
+  deleteAppraisalB(input: $input, condition: $condition) {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreatePhotoB(
+  $input: CreatePhotoBInput!
+  $condition: ModelPhotoBConditionInput
+) {
+  createPhotoB(input: $input, condition: $condition) {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdatePhotoB(
+  $input: UpdatePhotoBInput!
+  $condition: ModelPhotoBConditionInput
+) {
+  updatePhotoB(input: $input, condition: $condition) {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeletePhotoB(
+  $input: DeletePhotoBInput!
+  $condition: ModelPhotoBConditionInput
+) {
+  deletePhotoB(input: $input, condition: $condition) {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

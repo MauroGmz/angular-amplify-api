@@ -203,3 +203,135 @@ subscription OnDeletePhoto {
     updatedAt
   }
 }
+subscription OnCreatePhotoCar {
+  onCreatePhotoCar {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdatePhotoCar {
+  onUpdatePhotoCar {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeletePhotoCar {
+  onDeletePhotoCar {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateAppraisalB {
+  onCreateAppraisalB {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateAppraisalB {
+  onUpdateAppraisalB {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteAppraisalB {
+  onDeleteAppraisalB {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreatePhotoB {
+  onCreatePhotoB {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdatePhotoB {
+  onUpdatePhotoB {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeletePhotoB {
+  onDeletePhotoB {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

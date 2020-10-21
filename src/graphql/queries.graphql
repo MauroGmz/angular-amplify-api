@@ -128,3 +128,102 @@ query ListPhotos(
     nextToken
   }
 }
+query GetPhotoCar($id: ID!) {
+  getPhotoCar(id: $id) {
+    id
+    url
+    createdAt
+    updatedAt
+  }
+}
+query ListPhotoCars(
+  $filter: ModelPhotoCarFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPhotoCars(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      url
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetAppraisalB($id: ID!) {
+  getAppraisalB(id: $id) {
+    id
+    name
+    photos {
+      items {
+        id
+        appraisalBID
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListAppraisalBs(
+  $filter: ModelAppraisalBFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAppraisalBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetPhotoB($id: ID!) {
+  getPhotoB(id: $id) {
+    id
+    appraisalBID
+    url
+    appraisalB {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListPhotoBs(
+  $filter: ModelPhotoBFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPhotoBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      appraisalBID
+      url
+      appraisalB {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
