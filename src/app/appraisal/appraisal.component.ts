@@ -17,6 +17,8 @@ export class AppraisalComponent implements OnInit {
   public createFormAppraisalName: FormGroup;
   public createFormAppraisalUrl: FormGroup;
 
+  appraisalID: string;
+
   appraisal: Appraisal;
   photoType: PhotoType;
   photosCar: PhotoType[] = [];
@@ -63,17 +65,18 @@ export class AppraisalComponent implements OnInit {
 
   public onCreateAppraisal() {
     this.appraisal = {
-      name: this.name,
-      photosCar: this.photosCar,
-      photosDocs: this.photosCar
+      name: this.name
     }
     this.saveAppraisal(this.appraisal);
   }
 
   async saveAppraisal(appraisal: Appraisal){
     console.log(appraisal);
-    await this._api.CreateAppraisal(appraisal).then(event => {
+    await this._api.CreateAppraisalB(appraisal).then(event => {
+      this.appraisalID = event.id;
+      console.log(event.id)
       console.log('item created!');
+      console.log("this is appraisalID variable: " + this.appraisalID);
     })
     .catch(e => {
       console.log('error creating appraisal...', e);

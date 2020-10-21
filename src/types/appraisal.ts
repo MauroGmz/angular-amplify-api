@@ -1,7 +1,4 @@
-import { PhotoType } from './photo';
 
 export type Appraisal = {
-    name: string,
-    photosCar: PhotoType[],
-    photosDocs: PhotoType[]
+    name: string
 }
