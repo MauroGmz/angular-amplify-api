@@ -335,3 +335,105 @@ subscription OnDeletePhotoB {
     updatedAt
   }
 }
+subscription OnCreateAppraisalC {
+  onCreateAppraisalC {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateAppraisalC {
+  onUpdateAppraisalC {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteAppraisalC {
+  onDeleteAppraisalC {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreatePhotoC {
+  onCreatePhotoC {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdatePhotoC {
+  onUpdatePhotoC {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeletePhotoC {
+  onDeletePhotoC {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

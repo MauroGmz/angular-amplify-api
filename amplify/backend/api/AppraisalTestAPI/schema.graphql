@@ -42,3 +42,15 @@ type PhotoB @model
   url: String!
   appraisalB: AppraisalB @connection(fields: ["appraisalBID"])
 }
+
+type AppraisalC @model {
+  id: ID!
+  name: String!
+  photos: [PhotoC] @connection(name: "photoC")
+}
+
+type PhotoC @model {
+  id: ID!
+  url: String!
+  appraisal: AppraisalC @connection(name: "photoC")
+}

@@ -389,3 +389,123 @@ mutation DeletePhotoB(
     updatedAt
   }
 }
+mutation CreateAppraisalC(
+  $input: CreateAppraisalCInput!
+  $condition: ModelAppraisalCConditionInput
+) {
+  createAppraisalC(input: $input, condition: $condition) {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateAppraisalC(
+  $input: UpdateAppraisalCInput!
+  $condition: ModelAppraisalCConditionInput
+) {
+  updateAppraisalC(input: $input, condition: $condition) {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteAppraisalC(
+  $input: DeleteAppraisalCInput!
+  $condition: ModelAppraisalCConditionInput
+) {
+  deleteAppraisalC(input: $input, condition: $condition) {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreatePhotoC(
+  $input: CreatePhotoCInput!
+  $condition: ModelPhotoCConditionInput
+) {
+  createPhotoC(input: $input, condition: $condition) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdatePhotoC(
+  $input: UpdatePhotoCInput!
+  $condition: ModelPhotoCConditionInput
+) {
+  updatePhotoC(input: $input, condition: $condition) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeletePhotoC(
+  $input: DeletePhotoCInput!
+  $condition: ModelPhotoCConditionInput
+) {
+  deletePhotoC(input: $input, condition: $condition) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

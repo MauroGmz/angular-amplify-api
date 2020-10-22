@@ -227,3 +227,76 @@ query ListPhotoBs(
     nextToken
   }
 }
+query GetAppraisalC($id: ID!) {
+  getAppraisalC(id: $id) {
+    id
+    name
+    photos {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListAppraisalCs(
+  $filter: ModelAppraisalCFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAppraisalCs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetPhotoC($id: ID!) {
+  getPhotoC(id: $id) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListPhotoCs(
+  $filter: ModelPhotoCFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPhotoCs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      url
+      appraisal {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

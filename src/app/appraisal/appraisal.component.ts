@@ -6,6 +6,8 @@ import { APIService } from './../API.service';
 import { PhotoType } from './../../types/photo';
 import { Appraisal } from './../../types/appraisal';
 import { Photo } from './../models/photo';
+import { PhotoI } from './../models/photos';
+import { AppraisalI } from './../models/appraisal';
 
 @Component({
   selector: 'app-appraisal',
@@ -18,16 +20,18 @@ export class AppraisalComponent implements OnInit {
   public createFormAppraisalUrl: FormGroup;
 
   appraisalID: string;
+  appraisalBID: any;
 
   appraisal: Appraisal;
   photoType: PhotoType;
   photosCar: PhotoType[] = [];
 
   /* declare appraisals variable */
-  appraisals: Array<any>;
+  appraisals: Array<AppraisalI>;
+  appraisalsB: any;
 
   name: string;
-  photosArray: Photo[] = [
+  photosArray: PhotoI[] = [
     /*
     {url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
     {url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
@@ -37,7 +41,7 @@ export class AppraisalComponent implements OnInit {
 
   constructor(private _api: APIService, private fb: FormBuilder) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.createFormAppraisalName = this.fb.group({
       'name': ['', Validators.required]
     });
@@ -45,11 +49,24 @@ export class AppraisalComponent implements OnInit {
       'url': ['', Validators.required]
     });
 
+    
     /* fetch appraisals when app loads */
-    this._api.ListAppraisalBs().then(event => {
-      this.appraisals = event.items;
-      console.log(event.items);
+    this._api.ListAppraisalCs().then(data => {
+      this.appraisalsB = data.items;
+      console.log(data.items);
+      this.appraisalsB.forEach((element) => {
+        console.log(element.id);
+        this.appraisalBID = element.id;
+        console.log("el id de la tasación es: " + this.appraisalBID)
+        this._api.GetAppraisalC(this.appraisalBID).then(data => {
+          console.log(data);
+        })
+
+      });
     });
+    /* let result = await this._api.ListAppraisalBs();
+    this.appraisalsB = result.items;
+    console.log(this.appraisalsB); */
 
     /* subscribe to new appraisals being created */
     this._api.OnCreateAppraisalBListener.subscribe( (event: any) => {
@@ -57,6 +74,16 @@ export class AppraisalComponent implements OnInit {
       this.appraisals = [newAppraisal, ...this.appraisals];
     });
   }
+
+  /* getAppraisals():Promise<any>{
+		try{
+			return this._api.GetAppraisalC(this.appraisalBID);
+		}
+		catch(error){
+			return error;
+
+		}
+	} */
 
   public onCreateName(N) {
     console.log(N.name);
