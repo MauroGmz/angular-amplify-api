@@ -21,6 +21,7 @@ export class AppraisalComponent implements OnInit {
 
   appraisalID: string;
   appraisalBID: any;
+  appraisalsI: Appraisal;
 
   appraisal: Appraisal;
   photoType: PhotoType;
@@ -29,6 +30,7 @@ export class AppraisalComponent implements OnInit {
   /* declare appraisals variable */
   appraisals: Array<AppraisalI>;
   appraisalsB: any;
+  allAppraisals: Appraisal[] = [];
 
   name: string;
   photosArray: PhotoI[] = [
@@ -51,27 +53,27 @@ export class AppraisalComponent implements OnInit {
 
     
     /* fetch appraisals when app loads */
-    this._api.ListAppraisalCs().then(data => {
+    this._api.ListAppraisalBs().then(data => {
       this.appraisalsB = data.items;
-      console.log(data.items);
       this.appraisalsB.forEach((element) => {
-        console.log(element.id);
         this.appraisalBID = element.id;
-        console.log("el id de la tasación es: " + this.appraisalBID)
-        this._api.GetAppraisalC(this.appraisalBID).then(data => {
-          console.log(data);
+        //console.log("el id de la tasación es: " + this.appraisalBID)
+        this._api.GetAppraisalB(this.appraisalBID).then(data => {
+          this.allAppraisals.push(data); 
         })
-
       });
+      console.log(this.allAppraisals)
     });
-    /* let result = await this._api.ListAppraisalBs();
-    this.appraisalsB = result.items;
-    console.log(this.appraisalsB); */
 
     /* subscribe to new appraisals being created */
     this._api.OnCreateAppraisalBListener.subscribe( (event: any) => {
       const newAppraisal = event.value.data.onCreateAppraisalB;
-      this.appraisals = [newAppraisal, ...this.appraisals];
+      console.log(newAppraisal)
+      this.appraisalsB = [newAppraisal, ...this.appraisalsB];
+      this.appraisalBID = newAppraisal.id;
+      this._api.GetAppraisalB(this.appraisalBID).then(data => {
+        this.allAppraisals.push(data); 
+      })
     });
   }
 
