@@ -23,6 +23,9 @@ export class AppraisalComponent implements OnInit {
   photoType: PhotoType;
   photosCar: PhotoType[] = [];
 
+  /* declare appraisals variable */
+  appraisals: Array<any>;
+
   name: string;
   photosArray: Photo[] = [
     /*
@@ -41,6 +44,18 @@ export class AppraisalComponent implements OnInit {
     this.createFormAppraisalUrl = this.fb.group({
       'url': ['', Validators.required]
     });
+
+    /* fetch appraisals when app loads */
+    this._api.ListAppraisalBs().then(event => {
+      this.appraisals = event.items;
+      console.log(event.items);
+    });
+
+    /* subscribe to new appraisals being created */
+    this._api.OnCreateAppraisalBListener.subscribe( (event: any) => {
+      const newAppraisal = event.value.data.onCreateAppraisalB;
+      this.appraisals = [newAppraisal, ...this.appraisals];
+    });
   }
 
   public onCreateName(N) {
@@ -51,17 +66,6 @@ export class AppraisalComponent implements OnInit {
   public onCreateUrl(U) {
     console.log(U.url);
     this.photosArray.push(U);
-  }
-
-  addPhotosToNewAppraisal(){
-    for (let photo of this.photosArray) {
-      this.photoType = {
-        appraisalBID: this.appraisalID,
-        url: photo.url
-      }
-      this.photosCar.push(this.photoType);
-    }
-    this.onCreateAppraisal();
   }
 
   public onCreateAppraisal() {

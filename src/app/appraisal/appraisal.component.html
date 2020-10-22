@@ -24,3 +24,8 @@
 </div>
 
 <button (click)="onCreateAppraisal()">add new appraisal</button>
+
+<div *ngFor="let appraisal of appraisals">
+    <div>{{ appraisal.name }}</div>
+    <div>{{ appraisal.photos }}</div>
+  </div>

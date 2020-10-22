@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     /* fetch cars when app loads */
     this.api.ListCars().then(event => {
       this.cars = event.items;
+      console.log(this.cars);
     });
 
     /* subscribe to new cars being created */
