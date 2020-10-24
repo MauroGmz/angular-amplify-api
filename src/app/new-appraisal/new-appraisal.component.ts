@@ -4,6 +4,7 @@ import { APIService } from './../API.service';
 
 import { PhotoICar, PhotoIDoc } from './../models/photos';
 import { AppraisalI } from './../models/appraisalC';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class NewAppraisalComponent implements OnInit {
   photosCar: PhotoICar[] = [];
   photosDoc: PhotoIDoc[] = [];
 
-  constructor(private _api: APIService, private fb: FormBuilder) { }
+  constructor(private _api: APIService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.createFormAppraisalName = this.fb.group({
@@ -39,6 +40,10 @@ export class NewAppraisalComponent implements OnInit {
     this.createFormAppraisalUrlDoc = this.fb.group({
       'url': ['', Validators.required]
     });
+  }
+
+  goToUsers() {
+    this.router.navigate(['/users']);
   }
 
   public onCreateName(n) {

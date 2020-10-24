@@ -5,12 +5,12 @@
     <amplify-sign-out></amplify-sign-out>
   </div>
 
---> 
-  <!-- previous code -->
+-->
+<!-- previous code -->
 <!--
 </amplify-authenticator>
 -->
-
+<!-- 
 <div class="form-body">
   <form autocomplete="off" [formGroup]="createForm" (ngSubmit)="onCreate(createForm.value)">
     <div>
@@ -27,7 +27,7 @@
     </div>
     <button type="submit">Submit</button>
   </form>
-</div>
+</div> -->
 
 <!-- <div *ngFor="let car of cars">
   <div>{{ car.patent }}</div>
@@ -35,8 +35,7 @@
   <div>{{ car.description }}</div>
 </div>
  -->
-<br>
-<hr>
-<br>
-<app-new-appraisal></app-new-appraisal>
-<app-list-appraisal></app-list-appraisal>
+<app-menu></app-menu>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

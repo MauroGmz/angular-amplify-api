@@ -12,13 +12,17 @@ import { AppComponent } from './app.component';
 import { AppraisalComponent } from './appraisal/appraisal.component';
 import { NewAppraisalComponent } from './new-appraisal/new-appraisal.component';
 import { ListAppraisalComponent } from './list-appraisal/list-appraisal.component';
+import { UsersComponent } from './users/users.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppraisalComponent,
     NewAppraisalComponent,
-    ListAppraisalComponent
+    ListAppraisalComponent,
+    UsersComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
