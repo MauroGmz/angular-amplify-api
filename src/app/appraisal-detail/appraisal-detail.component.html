@@ -1,3 +1,30 @@
 <h3> Detail Appraisal </h3>
 
 <button class="btn btn-primary" (click)="goToAppraisals()"> Back </button>
+
+<ng-container *ngIf="appraisal">
+    <table class="table"> 
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>createdAt</th>
+                <th>updateAt</th>
+                <th>photos cars</th>
+                <th>photos docs</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ appraisal.name }}</td>
+                <td>{{ appraisal.createdAt }}</td>
+                <td>{{ appraisal.updatedAt }}</td>
+                <td>
+                    <li *ngFor="let p of appraisal.photos_cars.items">url: {{ p.url }}</li>
+                </td>
+                <td>
+                    <li *ngFor="let p of appraisal.photos_docs.items">url: {{ p.url }}</li>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>

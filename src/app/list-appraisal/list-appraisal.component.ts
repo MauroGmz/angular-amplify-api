@@ -24,14 +24,17 @@ export class ListAppraisalComponent implements OnInit {
       this.appraisals = data.items;
       this.appraisals.forEach((element) => {
         this.appraisalID = element.id;
-        //console.log("el id de la tasación es: " + this.appraisalBID)
-        this._api.GetAppraisalC(this.appraisalID).then(data => {
-          this.allAppraisals.push(data); 
-        })
+        this.getAppraisal(this.appraisalID)
       });
       console.log(this.allAppraisals)
     });
 
+  }
+
+  public async getAppraisal(id) {
+    await this._api.GetAppraisalC(id).then(data => {
+      this.allAppraisals.push(data); 
+    })
   }
 
   viewAppraisalDetails(idAppraisal) {
