@@ -14,6 +14,7 @@ import { NewAppraisalComponent } from './new-appraisal/new-appraisal.component';
 import { ListAppraisalComponent } from './list-appraisal/list-appraisal.component';
 import { UsersComponent } from './users/users.component';
 import { MenuComponent } from './menu/menu.component';
+import { AppraisalDetailComponent } from './appraisal-detail/appraisal-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MenuComponent } from './menu/menu.component';
     NewAppraisalComponent,
     ListAppraisalComponent,
     UsersComponent,
-    MenuComponent
+    MenuComponent,
+    AppraisalDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,7 @@ export class ListAppraisalComponent implements OnInit {
   }
 
   viewAppraisalDetails(idAppraisal) {
-    this.router.navigate(['/list-appraisal', idAppraisal, 'appraisals'])
+    this.router.navigate(['/list-appraisal', idAppraisal, 'appraisal-detail'])
   }
 
 }
