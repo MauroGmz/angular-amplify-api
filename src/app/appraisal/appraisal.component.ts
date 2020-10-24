@@ -6,7 +6,7 @@ import { APIService } from './../API.service';
 import { PhotoType } from './../../types/photo';
 import { Appraisal } from './../../types/appraisal';
 import { Photo } from './../models/photo';
-import { PhotoI } from './../models/photos';
+import { PhotoICar } from './../models/photos';
 import { AppraisalI } from './../models/appraisal';
 
 @Component({
@@ -33,7 +33,7 @@ export class AppraisalComponent implements OnInit {
   allAppraisals: Appraisal[] = [];
 
   name: string;
-  photosArray: PhotoI[] = [
+  photosArray: PhotoICar[] = [
     /*
     {url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
     {url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
@@ -124,7 +124,7 @@ export class AppraisalComponent implements OnInit {
         appraisalBID: this.appraisalID,
         url: photo.url
       }
-      await this._api.CreatePhotoC(this.photoType).then(event => {
+      await this._api.CreatePhotoCar(this.photoType).then(event => {
         console.log('Photo created!');
       })
       .catch(e => {

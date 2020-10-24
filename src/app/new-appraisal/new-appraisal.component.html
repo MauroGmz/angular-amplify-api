@@ -9,14 +9,14 @@
     <form autocomplete="off" [formGroup]="createFormAppraisalUrlCar" (ngSubmit)="onCreateUrlCar(createFormAppraisalUrlCar.value)">
         <div>
             <label>URL CAR PHOTO: </label>
-            <input type="text" formControlName="urlCar" autocomplete="off">
+            <input type="text" formControlName="url" autocomplete="off">
         </div>
         <button type="submit">Submit</button>
     </form>
     <form autocomplete="off" [formGroup]="createFormAppraisalUrlDoc" (ngSubmit)="onCreateUrlDoc(createFormAppraisalUrlDoc.value)">
         <div>
             <label>URL DOC PHOTO: </label>
-            <input type="text" formControlName="urlDoc" autocomplete="off">
+            <input type="text" formControlName="url" autocomplete="off">
         </div>
         <button type="submit">Submit</button>
     </form>
@@ -28,12 +28,12 @@
 
 <h3>CAR PHOTOS:</h3>
 <div *ngFor="let photos of photosCar">
-    <li>url car: {{ photos.urlCar }}</li>
+    <li>url car: {{ photos.url }}</li>
 </div>
 
 <h3>DOC PHOTOS:</h3>
 <div *ngFor="let photos of photosDoc">
-    <li>url doc: {{ photos.urlDoc }}</li>
+    <li>url doc: {{ photos.url }}</li>
 </div>
 
 <button (click)="onCreateAppraisal()">add new appraisal</button>

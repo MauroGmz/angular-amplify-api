@@ -1,8 +1,8 @@
-import { PhotoI } from './photos';
+import { PhotoICar, PhotoIDoc } from './photos';
 
 export interface AppraisalI {
     id?: string;
     name: string;
-    photos_cars?: [PhotoI]
-    photos_docs?: [PhotoI]
+    photos_cars?: [PhotoICar]
+    photos_docs?: [PhotoIDoc]
 }

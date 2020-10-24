@@ -1,7 +1,7 @@
-import { PhotoI } from './photos';
+import { PhotoICar } from './photos';
 
 export interface AppraisalI {
     id?: string;
     name: string;
-    photos: [PhotoI]
+    photos: [PhotoICar]
 }

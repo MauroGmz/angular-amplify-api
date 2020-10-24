@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIService } from './../API.service';
 
-import { PhotoI } from './../models/photos';
+import { PhotoICar, PhotoIDoc } from './../models/photos';
 import { AppraisalI } from './../models/appraisalC';
 
 
@@ -19,13 +19,13 @@ export class NewAppraisalComponent implements OnInit {
 
   /* variables for create appraisal */
   appraisalID: string;
-  photoCreate: PhotoI;
-
+  photoCarCreate: PhotoICar;
+  photoDocCreate: PhotoIDoc;
   /* declare appraisals variable */
   appraisal: AppraisalI;
   name: string;
-  photosCar: PhotoI[] = [];
-  photosDoc: PhotoI[] = [];
+  photosCar: PhotoICar[] = [];
+  photosDoc: PhotoIDoc[] = [];
 
   constructor(private _api: APIService, private fb: FormBuilder) { }
 
@@ -34,10 +34,10 @@ export class NewAppraisalComponent implements OnInit {
       'name': ['', Validators.required]
     });
     this.createFormAppraisalUrlCar = this.fb.group({
-      'urlCar': ['', Validators.required]
+      'url': ['', Validators.required]
     });
     this.createFormAppraisalUrlDoc = this.fb.group({
-      'urlDoc': ['', Validators.required]
+      'url': ['', Validators.required]
     });
   }
 
@@ -64,7 +64,6 @@ export class NewAppraisalComponent implements OnInit {
     await this._api.CreateAppraisalC(appraisal).then(event => {
       this.appraisalID = event.id;
       console.log('Appraisal created!');
-      console.log("this is appraisalID variable: " + this.appraisalID);
       this.addPhotosToAppraisal();
     })
     .catch(e => {
@@ -72,8 +71,8 @@ export class NewAppraisalComponent implements OnInit {
     });
   }
 
-  async createPhoto(photo: PhotoI) {
-    await this._api.CreatePhotoC(photo).then(event => {
+  async createPhotoCar(photo: PhotoICar) {
+    await this._api.CreatePhotoCar(photo).then(event => {
       console.log('Photo created!');
     })
     .catch(e => {
@@ -81,19 +80,30 @@ export class NewAppraisalComponent implements OnInit {
     });
   }
 
-  public addPhotosArray(photos: PhotoI[]) {
-    for (let photo of photos) {
-      this.photoCreate = {
-        photoCAppraisalId: this.appraisalID,
-        url: photo.url
-      }
-      this.createPhoto(this.photoCreate);
-    }
+  async createPhotoDoc(photo: PhotoIDoc) {
+    await this._api.CreatePhotoDoc(photo).then(event => {
+      console.log('Photo created!');
+    })
+    .catch(e => {
+      console.log('error creating Photo...', e);
+    });
   }
 
   public addPhotosToAppraisal() {
-    this.addPhotosArray(this.photosCar);
-    this.addPhotosArray(this.photosCar);
+    for (let photo of this.photosCar) {
+      this.photoCarCreate = {
+        photoCarAppraisalId: this.appraisalID,
+        url: photo.url
+      }
+      this.createPhotoCar(this.photoCarCreate);
+    }
+    for (let photo of this.photosDoc) {
+      this.photoDocCreate = {
+        photoDocAppraisalId: this.appraisalID,
+        url: photo.url
+      }
+      this.createPhotoDoc(this.photoDocCreate);
+    }
   }
 
 }
