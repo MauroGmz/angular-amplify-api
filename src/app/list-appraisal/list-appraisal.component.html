@@ -1,4 +1,4 @@
-<div *ngFor="let appraisal of allAppraisals">
+<!-- <div *ngFor="let appraisal of allAppraisals">
     <div>{{ appraisal.name }}</div>
     <div *ngFor="let p of appraisal.photos_cars.items"> 
         <li>url: {{ p.url }}</li>
@@ -6,4 +6,23 @@
     <div *ngFor="let p of appraisal.photos_docs.items"> 
         <li>url: {{ p.url }}</li>
     </div>
-</div>
+</div> -->
+
+<ng-container *ngIf="allAppraisals">
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of allAppraisals">
+                <td><button class="btn btn-primary" (click)="viewAppraisalDetails(p.id)">View Details</button></td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.createdAt }}</td>
+            </tr>
+        </tbody>
+    </table>
+  </ng-container>

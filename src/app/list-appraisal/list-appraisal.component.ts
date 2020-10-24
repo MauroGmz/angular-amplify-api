@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { APIService } from './../API.service';
 import { AppraisalI } from './../models/appraisalC';
 
@@ -14,7 +15,7 @@ export class ListAppraisalComponent implements OnInit {
   appraisals: any;
   allAppraisals: any[] = [];
 
-  constructor(private _api: APIService) { }
+  constructor(private _api: APIService, private router: Router) { }
 
   async ngOnInit() {
 
@@ -31,6 +32,10 @@ export class ListAppraisalComponent implements OnInit {
       console.log(this.allAppraisals)
     });
 
+  }
+
+  viewAppraisalDetails(idAppraisal) {
+    this.router.navigate(['/list-appraisal', idAppraisal, 'appraisals'])
   }
 
 }
