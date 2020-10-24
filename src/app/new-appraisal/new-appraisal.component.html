@@ -21,3 +21,19 @@
         <button type="submit">Submit</button>
     </form>
 </div>
+
+<h1> NEW APPRAISAL</h1>
+
+<h3>NAME: {{ name }}</h3>
+
+<h3>CAR PHOTOS:</h3>
+<div *ngFor="let photos of photosCar">
+    <li>url car: {{ photos.urlCar }}</li>
+</div>
+
+<h3>DOC PHOTOS:</h3>
+<div *ngFor="let photos of photosDoc">
+    <li>url doc: {{ photos.urlDoc }}</li>
+</div>
+
+<button (click)="onCreateAppraisal()">add new appraisal</button>

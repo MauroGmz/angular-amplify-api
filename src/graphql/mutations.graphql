@@ -125,11 +125,11 @@ mutation DeleteAppraisalC(
     updatedAt
   }
 }
-mutation CreatePhotoC(
-  $input: CreatePhotoCInput!
-  $condition: ModelPhotoCConditionInput
+mutation CreatePhotoCar(
+  $input: CreatePhotoCarInput!
+  $condition: ModelPhotoCarConditionInput
 ) {
-  createPhotoC(input: $input, condition: $condition) {
+  createPhotoCar(input: $input, condition: $condition) {
     id
     url
     appraisal {
@@ -148,11 +148,11 @@ mutation CreatePhotoC(
     updatedAt
   }
 }
-mutation UpdatePhotoC(
-  $input: UpdatePhotoCInput!
-  $condition: ModelPhotoCConditionInput
+mutation UpdatePhotoCar(
+  $input: UpdatePhotoCarInput!
+  $condition: ModelPhotoCarConditionInput
 ) {
-  updatePhotoC(input: $input, condition: $condition) {
+  updatePhotoCar(input: $input, condition: $condition) {
     id
     url
     appraisal {
@@ -171,11 +171,80 @@ mutation UpdatePhotoC(
     updatedAt
   }
 }
-mutation DeletePhotoC(
-  $input: DeletePhotoCInput!
-  $condition: ModelPhotoCConditionInput
+mutation DeletePhotoCar(
+  $input: DeletePhotoCarInput!
+  $condition: ModelPhotoCarConditionInput
 ) {
-  deletePhotoC(input: $input, condition: $condition) {
+  deletePhotoCar(input: $input, condition: $condition) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreatePhotoDoc(
+  $input: CreatePhotoDocInput!
+  $condition: ModelPhotoDocConditionInput
+) {
+  createPhotoDoc(input: $input, condition: $condition) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdatePhotoDoc(
+  $input: UpdatePhotoDocInput!
+  $condition: ModelPhotoDocConditionInput
+) {
+  updatePhotoDoc(input: $input, condition: $condition) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeletePhotoDoc(
+  $input: DeletePhotoDocInput!
+  $condition: ModelPhotoDocConditionInput
+) {
+  deletePhotoDoc(input: $input, condition: $condition) {
     id
     url
     appraisal {

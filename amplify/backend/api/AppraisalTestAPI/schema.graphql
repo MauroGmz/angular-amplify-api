@@ -46,12 +46,18 @@ type PhotoB @model
 type AppraisalC @model {
   id: ID!
   name: String!
-  photos_cars: [PhotoC] @connection(name: "photoC")
-  photos_docs: [PhotoC] @connection(name: "photoC")
+  photos_cars: [PhotoCar] @connection(name: "photoCar")
+  photos_docs: [PhotoDoc] @connection(name: "photoDoc")
 }
 
-type PhotoC @model {
+type PhotoCar @model {
   id: ID!
   url: String!
-  appraisal: AppraisalC @connection(name: "photoC")
+  appraisal: AppraisalC @connection(name: "photoCar")
+}
+
+type PhotoDoc @model {
+  id: ID!
+  url: String!
+  appraisal: AppraisalC @connection(name: "photoDoc")
 }

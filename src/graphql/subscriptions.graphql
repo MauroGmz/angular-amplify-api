@@ -107,8 +107,8 @@ subscription OnDeleteAppraisalC {
     updatedAt
   }
 }
-subscription OnCreatePhotoC {
-  onCreatePhotoC {
+subscription OnCreatePhotoCar {
+  onCreatePhotoCar {
     id
     url
     appraisal {
@@ -127,8 +127,8 @@ subscription OnCreatePhotoC {
     updatedAt
   }
 }
-subscription OnUpdatePhotoC {
-  onUpdatePhotoC {
+subscription OnUpdatePhotoCar {
+  onUpdatePhotoCar {
     id
     url
     appraisal {
@@ -147,8 +147,68 @@ subscription OnUpdatePhotoC {
     updatedAt
   }
 }
-subscription OnDeletePhotoC {
-  onDeletePhotoC {
+subscription OnDeletePhotoCar {
+  onDeletePhotoCar {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreatePhotoDoc {
+  onCreatePhotoDoc {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdatePhotoDoc {
+  onUpdatePhotoDoc {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeletePhotoDoc {
+  onDeletePhotoDoc {
     id
     url
     appraisal {

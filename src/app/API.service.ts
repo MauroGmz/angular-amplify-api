@@ -92,26 +92,49 @@ export type DeleteAppraisalCInput = {
   id?: string | null;
 };
 
-export type CreatePhotoCInput = {
+export type CreatePhotoCarInput = {
   id?: string | null;
   url: string;
-  photoCAppraisalId?: string | null;
+  photoCarAppraisalId?: string | null;
 };
 
-export type ModelPhotoCConditionInput = {
+export type ModelPhotoCarConditionInput = {
   url?: ModelStringInput | null;
-  and?: Array<ModelPhotoCConditionInput | null> | null;
-  or?: Array<ModelPhotoCConditionInput | null> | null;
-  not?: ModelPhotoCConditionInput | null;
+  and?: Array<ModelPhotoCarConditionInput | null> | null;
+  or?: Array<ModelPhotoCarConditionInput | null> | null;
+  not?: ModelPhotoCarConditionInput | null;
 };
 
-export type UpdatePhotoCInput = {
+export type UpdatePhotoCarInput = {
   id: string;
   url?: string | null;
-  photoCAppraisalId?: string | null;
+  photoCarAppraisalId?: string | null;
 };
 
-export type DeletePhotoCInput = {
+export type DeletePhotoCarInput = {
+  id?: string | null;
+};
+
+export type CreatePhotoDocInput = {
+  id?: string | null;
+  url: string;
+  photoDocAppraisalId?: string | null;
+};
+
+export type ModelPhotoDocConditionInput = {
+  url?: ModelStringInput | null;
+  and?: Array<ModelPhotoDocConditionInput | null> | null;
+  or?: Array<ModelPhotoDocConditionInput | null> | null;
+  not?: ModelPhotoDocConditionInput | null;
+};
+
+export type UpdatePhotoDocInput = {
+  id: string;
+  url?: string | null;
+  photoDocAppraisalId?: string | null;
+};
+
+export type DeletePhotoDocInput = {
   id?: string | null;
 };
 
@@ -149,12 +172,20 @@ export type ModelAppraisalCFilterInput = {
   not?: ModelAppraisalCFilterInput | null;
 };
 
-export type ModelPhotoCFilterInput = {
+export type ModelPhotoCarFilterInput = {
   id?: ModelIDInput | null;
   url?: ModelStringInput | null;
-  and?: Array<ModelPhotoCFilterInput | null> | null;
-  or?: Array<ModelPhotoCFilterInput | null> | null;
-  not?: ModelPhotoCFilterInput | null;
+  and?: Array<ModelPhotoCarFilterInput | null> | null;
+  or?: Array<ModelPhotoCarFilterInput | null> | null;
+  not?: ModelPhotoCarFilterInput | null;
+};
+
+export type ModelPhotoDocFilterInput = {
+  id?: ModelIDInput | null;
+  url?: ModelStringInput | null;
+  and?: Array<ModelPhotoDocFilterInput | null> | null;
+  or?: Array<ModelPhotoDocFilterInput | null> | null;
+  not?: ModelPhotoDocFilterInput | null;
 };
 
 export type CreateCarMutation = {
@@ -192,9 +223,9 @@ export type CreateAppraisalCMutation = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -203,9 +234,9 @@ export type CreateAppraisalCMutation = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -222,9 +253,9 @@ export type UpdateAppraisalCMutation = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -233,9 +264,9 @@ export type UpdateAppraisalCMutation = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -252,9 +283,9 @@ export type DeleteAppraisalCMutation = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -263,9 +294,9 @@ export type DeleteAppraisalCMutation = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -277,8 +308,8 @@ export type DeleteAppraisalCMutation = {
   updatedAt: string;
 };
 
-export type CreatePhotoCMutation = {
-  __typename: "PhotoC";
+export type CreatePhotoCarMutation = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -286,11 +317,11 @@ export type CreatePhotoCMutation = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -300,8 +331,8 @@ export type CreatePhotoCMutation = {
   updatedAt: string;
 };
 
-export type UpdatePhotoCMutation = {
-  __typename: "PhotoC";
+export type UpdatePhotoCarMutation = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -309,11 +340,11 @@ export type UpdatePhotoCMutation = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -323,8 +354,8 @@ export type UpdatePhotoCMutation = {
   updatedAt: string;
 };
 
-export type DeletePhotoCMutation = {
-  __typename: "PhotoC";
+export type DeletePhotoCarMutation = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -332,11 +363,80 @@ export type DeletePhotoCMutation = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreatePhotoDocMutation = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdatePhotoDocMutation = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeletePhotoDocMutation = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -375,9 +475,9 @@ export type GetAppraisalCQuery = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -386,9 +486,9 @@ export type GetAppraisalCQuery = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -407,11 +507,11 @@ export type ListAppraisalCsQuery = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -420,8 +520,8 @@ export type ListAppraisalCsQuery = {
   nextToken: string | null;
 };
 
-export type GetPhotoCQuery = {
-  __typename: "PhotoC";
+export type GetPhotoCarQuery = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -429,11 +529,11 @@ export type GetPhotoCQuery = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -443,10 +543,52 @@ export type GetPhotoCQuery = {
   updatedAt: string;
 };
 
-export type ListPhotoCsQuery = {
-  __typename: "ModelPhotoCConnection";
+export type ListPhotoCarsQuery = {
+  __typename: "ModelPhotoCarConnection";
   items: Array<{
-    __typename: "PhotoC";
+    __typename: "PhotoCar";
+    id: string;
+    url: string;
+    appraisal: {
+      __typename: "AppraisalC";
+      id: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetPhotoDocQuery = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListPhotoDocsQuery = {
+  __typename: "ModelPhotoDocConnection";
+  items: Array<{
+    __typename: "PhotoDoc";
     id: string;
     url: string;
     appraisal: {
@@ -497,9 +639,9 @@ export type OnCreateAppraisalCSubscription = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -508,9 +650,9 @@ export type OnCreateAppraisalCSubscription = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -527,9 +669,9 @@ export type OnUpdateAppraisalCSubscription = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -538,9 +680,9 @@ export type OnUpdateAppraisalCSubscription = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -557,9 +699,9 @@ export type OnDeleteAppraisalCSubscription = {
   id: string;
   name: string;
   photos_cars: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoCarConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoCar";
       id: string;
       url: string;
       createdAt: string;
@@ -568,9 +710,9 @@ export type OnDeleteAppraisalCSubscription = {
     nextToken: string | null;
   } | null;
   photos_docs: {
-    __typename: "ModelPhotoCConnection";
+    __typename: "ModelPhotoDocConnection";
     items: Array<{
-      __typename: "PhotoC";
+      __typename: "PhotoDoc";
       id: string;
       url: string;
       createdAt: string;
@@ -582,8 +724,8 @@ export type OnDeleteAppraisalCSubscription = {
   updatedAt: string;
 };
 
-export type OnCreatePhotoCSubscription = {
-  __typename: "PhotoC";
+export type OnCreatePhotoCarSubscription = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -591,11 +733,11 @@ export type OnCreatePhotoCSubscription = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -605,8 +747,8 @@ export type OnCreatePhotoCSubscription = {
   updatedAt: string;
 };
 
-export type OnUpdatePhotoCSubscription = {
-  __typename: "PhotoC";
+export type OnUpdatePhotoCarSubscription = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -614,11 +756,11 @@ export type OnUpdatePhotoCSubscription = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -628,8 +770,8 @@ export type OnUpdatePhotoCSubscription = {
   updatedAt: string;
 };
 
-export type OnDeletePhotoCSubscription = {
-  __typename: "PhotoC";
+export type OnDeletePhotoCarSubscription = {
+  __typename: "PhotoCar";
   id: string;
   url: string;
   appraisal: {
@@ -637,11 +779,80 @@ export type OnDeletePhotoCSubscription = {
     id: string;
     name: string;
     photos_cars: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoCarConnection";
       nextToken: string | null;
     } | null;
     photos_docs: {
-      __typename: "ModelPhotoCConnection";
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreatePhotoDocSubscription = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdatePhotoDocSubscription = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeletePhotoDocSubscription = {
+  __typename: "PhotoDoc";
+  id: string;
+  url: string;
+  appraisal: {
+    __typename: "AppraisalC";
+    id: string;
+    name: string;
+    photos_cars: {
+      __typename: "ModelPhotoCarConnection";
+      nextToken: string | null;
+    } | null;
+    photos_docs: {
+      __typename: "ModelPhotoDocConnection";
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -871,12 +1082,12 @@ export class APIService {
     )) as any;
     return <DeleteAppraisalCMutation>response.data.deleteAppraisalC;
   }
-  async CreatePhotoC(
-    input: CreatePhotoCInput,
-    condition?: ModelPhotoCConditionInput
-  ): Promise<CreatePhotoCMutation> {
-    const statement = `mutation CreatePhotoC($input: CreatePhotoCInput!, $condition: ModelPhotoCConditionInput) {
-        createPhotoC(input: $input, condition: $condition) {
+  async CreatePhotoCar(
+    input: CreatePhotoCarInput,
+    condition?: ModelPhotoCarConditionInput
+  ): Promise<CreatePhotoCarMutation> {
+    const statement = `mutation CreatePhotoCar($input: CreatePhotoCarInput!, $condition: ModelPhotoCarConditionInput) {
+        createPhotoCar(input: $input, condition: $condition) {
           __typename
           id
           url
@@ -908,14 +1119,14 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <CreatePhotoCMutation>response.data.createPhotoC;
+    return <CreatePhotoCarMutation>response.data.createPhotoCar;
   }
-  async UpdatePhotoC(
-    input: UpdatePhotoCInput,
-    condition?: ModelPhotoCConditionInput
-  ): Promise<UpdatePhotoCMutation> {
-    const statement = `mutation UpdatePhotoC($input: UpdatePhotoCInput!, $condition: ModelPhotoCConditionInput) {
-        updatePhotoC(input: $input, condition: $condition) {
+  async UpdatePhotoCar(
+    input: UpdatePhotoCarInput,
+    condition?: ModelPhotoCarConditionInput
+  ): Promise<UpdatePhotoCarMutation> {
+    const statement = `mutation UpdatePhotoCar($input: UpdatePhotoCarInput!, $condition: ModelPhotoCarConditionInput) {
+        updatePhotoCar(input: $input, condition: $condition) {
           __typename
           id
           url
@@ -947,14 +1158,14 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <UpdatePhotoCMutation>response.data.updatePhotoC;
+    return <UpdatePhotoCarMutation>response.data.updatePhotoCar;
   }
-  async DeletePhotoC(
-    input: DeletePhotoCInput,
-    condition?: ModelPhotoCConditionInput
-  ): Promise<DeletePhotoCMutation> {
-    const statement = `mutation DeletePhotoC($input: DeletePhotoCInput!, $condition: ModelPhotoCConditionInput) {
-        deletePhotoC(input: $input, condition: $condition) {
+  async DeletePhotoCar(
+    input: DeletePhotoCarInput,
+    condition?: ModelPhotoCarConditionInput
+  ): Promise<DeletePhotoCarMutation> {
+    const statement = `mutation DeletePhotoCar($input: DeletePhotoCarInput!, $condition: ModelPhotoCarConditionInput) {
+        deletePhotoCar(input: $input, condition: $condition) {
           __typename
           id
           url
@@ -986,7 +1197,124 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <DeletePhotoCMutation>response.data.deletePhotoC;
+    return <DeletePhotoCarMutation>response.data.deletePhotoCar;
+  }
+  async CreatePhotoDoc(
+    input: CreatePhotoDocInput,
+    condition?: ModelPhotoDocConditionInput
+  ): Promise<CreatePhotoDocMutation> {
+    const statement = `mutation CreatePhotoDoc($input: CreatePhotoDocInput!, $condition: ModelPhotoDocConditionInput) {
+        createPhotoDoc(input: $input, condition: $condition) {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreatePhotoDocMutation>response.data.createPhotoDoc;
+  }
+  async UpdatePhotoDoc(
+    input: UpdatePhotoDocInput,
+    condition?: ModelPhotoDocConditionInput
+  ): Promise<UpdatePhotoDocMutation> {
+    const statement = `mutation UpdatePhotoDoc($input: UpdatePhotoDocInput!, $condition: ModelPhotoDocConditionInput) {
+        updatePhotoDoc(input: $input, condition: $condition) {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdatePhotoDocMutation>response.data.updatePhotoDoc;
+  }
+  async DeletePhotoDoc(
+    input: DeletePhotoDocInput,
+    condition?: ModelPhotoDocConditionInput
+  ): Promise<DeletePhotoDocMutation> {
+    const statement = `mutation DeletePhotoDoc($input: DeletePhotoDocInput!, $condition: ModelPhotoDocConditionInput) {
+        deletePhotoDoc(input: $input, condition: $condition) {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeletePhotoDocMutation>response.data.deletePhotoDoc;
   }
   async GetCar(id: string): Promise<GetCarQuery> {
     const statement = `query GetCar($id: ID!) {
@@ -1124,9 +1452,9 @@ export class APIService {
     )) as any;
     return <ListAppraisalCsQuery>response.data.listAppraisalCs;
   }
-  async GetPhotoC(id: string): Promise<GetPhotoCQuery> {
-    const statement = `query GetPhotoC($id: ID!) {
-        getPhotoC(id: $id) {
+  async GetPhotoCar(id: string): Promise<GetPhotoCarQuery> {
+    const statement = `query GetPhotoCar($id: ID!) {
+        getPhotoCar(id: $id) {
           __typename
           id
           url
@@ -1155,15 +1483,15 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <GetPhotoCQuery>response.data.getPhotoC;
+    return <GetPhotoCarQuery>response.data.getPhotoCar;
   }
-  async ListPhotoCs(
-    filter?: ModelPhotoCFilterInput,
+  async ListPhotoCars(
+    filter?: ModelPhotoCarFilterInput,
     limit?: number,
     nextToken?: string
-  ): Promise<ListPhotoCsQuery> {
-    const statement = `query ListPhotoCs($filter: ModelPhotoCFilterInput, $limit: Int, $nextToken: String) {
-        listPhotoCs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  ): Promise<ListPhotoCarsQuery> {
+    const statement = `query ListPhotoCars($filter: ModelPhotoCarFilterInput, $limit: Int, $nextToken: String) {
+        listPhotoCars(filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
@@ -1195,7 +1523,80 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <ListPhotoCsQuery>response.data.listPhotoCs;
+    return <ListPhotoCarsQuery>response.data.listPhotoCars;
+  }
+  async GetPhotoDoc(id: string): Promise<GetPhotoDocQuery> {
+    const statement = `query GetPhotoDoc($id: ID!) {
+        getPhotoDoc(id: $id) {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetPhotoDocQuery>response.data.getPhotoDoc;
+  }
+  async ListPhotoDocs(
+    filter?: ModelPhotoDocFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListPhotoDocsQuery> {
+    const statement = `query ListPhotoDocs($filter: ModelPhotoDocFilterInput, $limit: Int, $nextToken: String) {
+        listPhotoDocs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            url
+            appraisal {
+              __typename
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListPhotoDocsQuery>response.data.listPhotoDocs;
   }
   OnCreateCarListener: Observable<OnCreateCarSubscription> = API.graphql(
     graphqlOperation(
@@ -1359,10 +1760,12 @@ export class APIService {
     )
   ) as Observable<OnDeleteAppraisalCSubscription>;
 
-  OnCreatePhotoCListener: Observable<OnCreatePhotoCSubscription> = API.graphql(
+  OnCreatePhotoCarListener: Observable<
+    OnCreatePhotoCarSubscription
+  > = API.graphql(
     graphqlOperation(
-      `subscription OnCreatePhotoC {
-        onCreatePhotoC {
+      `subscription OnCreatePhotoCar {
+        onCreatePhotoCar {
           __typename
           id
           url
@@ -1386,12 +1789,14 @@ export class APIService {
         }
       }`
     )
-  ) as Observable<OnCreatePhotoCSubscription>;
+  ) as Observable<OnCreatePhotoCarSubscription>;
 
-  OnUpdatePhotoCListener: Observable<OnUpdatePhotoCSubscription> = API.graphql(
+  OnUpdatePhotoCarListener: Observable<
+    OnUpdatePhotoCarSubscription
+  > = API.graphql(
     graphqlOperation(
-      `subscription OnUpdatePhotoC {
-        onUpdatePhotoC {
+      `subscription OnUpdatePhotoCar {
+        onUpdatePhotoCar {
           __typename
           id
           url
@@ -1415,12 +1820,14 @@ export class APIService {
         }
       }`
     )
-  ) as Observable<OnUpdatePhotoCSubscription>;
+  ) as Observable<OnUpdatePhotoCarSubscription>;
 
-  OnDeletePhotoCListener: Observable<OnDeletePhotoCSubscription> = API.graphql(
+  OnDeletePhotoCarListener: Observable<
+    OnDeletePhotoCarSubscription
+  > = API.graphql(
     graphqlOperation(
-      `subscription OnDeletePhotoC {
-        onDeletePhotoC {
+      `subscription OnDeletePhotoCar {
+        onDeletePhotoCar {
           __typename
           id
           url
@@ -1444,5 +1851,98 @@ export class APIService {
         }
       }`
     )
-  ) as Observable<OnDeletePhotoCSubscription>;
+  ) as Observable<OnDeletePhotoCarSubscription>;
+
+  OnCreatePhotoDocListener: Observable<
+    OnCreatePhotoDocSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreatePhotoDoc {
+        onCreatePhotoDoc {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnCreatePhotoDocSubscription>;
+
+  OnUpdatePhotoDocListener: Observable<
+    OnUpdatePhotoDocSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdatePhotoDoc {
+        onUpdatePhotoDoc {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnUpdatePhotoDocSubscription>;
+
+  OnDeletePhotoDocListener: Observable<
+    OnDeletePhotoDocSubscription
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeletePhotoDoc {
+        onDeletePhotoDoc {
+          __typename
+          id
+          url
+          appraisal {
+            __typename
+            id
+            name
+            photos_cars {
+              __typename
+              nextToken
+            }
+            photos_docs {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<OnDeletePhotoDocSubscription>;
 }

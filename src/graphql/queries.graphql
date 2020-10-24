@@ -69,8 +69,8 @@ query ListAppraisalCs(
     nextToken
   }
 }
-query GetPhotoC($id: ID!) {
-  getPhotoC(id: $id) {
+query GetPhotoCar($id: ID!) {
+  getPhotoCar(id: $id) {
     id
     url
     appraisal {
@@ -89,12 +89,53 @@ query GetPhotoC($id: ID!) {
     updatedAt
   }
 }
-query ListPhotoCs(
-  $filter: ModelPhotoCFilterInput
+query ListPhotoCars(
+  $filter: ModelPhotoCarFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listPhotoCs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listPhotoCars(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      url
+      appraisal {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetPhotoDoc($id: ID!) {
+  getPhotoDoc(id: $id) {
+    id
+    url
+    appraisal {
+      id
+      name
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListPhotoDocs(
+  $filter: ModelPhotoDocFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPhotoDocs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       url
