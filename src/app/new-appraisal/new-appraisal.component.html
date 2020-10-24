@@ -1,0 +1,23 @@
+<div class="form-body">
+    <form autocomplete="off" [formGroup]="createFormAppraisalName" (ngSubmit)="onCreateName(createFormAppraisalName.value)">
+        <div>
+            <label>APPRAISAL NAME: </label>
+            <input type="text" formControlName="name" autocomplete="off">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <form autocomplete="off" [formGroup]="createFormAppraisalUrlCar" (ngSubmit)="onCreateUrlCar(createFormAppraisalUrlCar.value)">
+        <div>
+            <label>URL CAR PHOTO: </label>
+            <input type="text" formControlName="urlCar" autocomplete="off">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <form autocomplete="off" [formGroup]="createFormAppraisalUrlDoc" (ngSubmit)="onCreateUrlDoc(createFormAppraisalUrlDoc.value)">
+        <div>
+            <label>URL DOC PHOTO: </label>
+            <input type="text" formControlName="urlDoc" autocomplete="off">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

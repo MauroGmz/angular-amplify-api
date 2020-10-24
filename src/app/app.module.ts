@@ -10,11 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppraisalComponent } from './appraisal/appraisal.component';
+import { NewAppraisalComponent } from './new-appraisal/new-appraisal.component';
+import { ListAppraisalComponent } from './list-appraisal/list-appraisal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppraisalComponent
+    AppraisalComponent,
+    NewAppraisalComponent,
+    ListAppraisalComponent
   ],
   imports: [
     BrowserModule,

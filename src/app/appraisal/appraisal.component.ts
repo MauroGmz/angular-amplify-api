@@ -53,12 +53,12 @@ export class AppraisalComponent implements OnInit {
 
     
     /* fetch appraisals when app loads */
-    this._api.ListAppraisalBs().then(data => {
+    this._api.ListAppraisalCs().then(data => {
       this.appraisalsB = data.items;
       this.appraisalsB.forEach((element) => {
         this.appraisalBID = element.id;
         //console.log("el id de la tasación es: " + this.appraisalBID)
-        this._api.GetAppraisalB(this.appraisalBID).then(data => {
+        this._api.GetAppraisalC(this.appraisalBID).then(data => {
           this.allAppraisals.push(data); 
         })
       });
@@ -66,12 +66,12 @@ export class AppraisalComponent implements OnInit {
     });
 
     /* subscribe to new appraisals being created */
-    this._api.OnCreateAppraisalBListener.subscribe( (event: any) => {
+    this._api.OnCreateAppraisalCListener.subscribe( (event: any) => {
       const newAppraisal = event.value.data.onCreateAppraisalB;
       console.log(newAppraisal)
       this.appraisalsB = [newAppraisal, ...this.appraisalsB];
       this.appraisalBID = newAppraisal.id;
-      this._api.GetAppraisalB(this.appraisalBID).then(data => {
+      this._api.GetAppraisalC(this.appraisalBID).then(data => {
         this.allAppraisals.push(data); 
       })
     });
@@ -106,7 +106,7 @@ export class AppraisalComponent implements OnInit {
 
   async saveAppraisal(appraisal: Appraisal){
     console.log(appraisal);
-    await this._api.CreateAppraisalB(appraisal).then(event => {
+    await this._api.CreateAppraisalC(appraisal).then(event => {
       this.appraisalID = event.id;
       console.log(event.id)
       console.log('Appraisal created!');
@@ -124,7 +124,7 @@ export class AppraisalComponent implements OnInit {
         appraisalBID: this.appraisalID,
         url: photo.url
       }
-      await this._api.CreatePhotoB(this.photoType).then(event => {
+      await this._api.CreatePhotoC(this.photoType).then(event => {
         console.log('Photo created!');
       })
       .catch(e => {
