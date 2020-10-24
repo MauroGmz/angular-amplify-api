@@ -29,317 +29,20 @@ subscription OnDeleteCar {
     updatedAt
   }
 }
-subscription OnCreateAppraisal {
-  onCreateAppraisal {
-    id
-    name
-    photosCar {
-      items {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    photosDocs {
-      items {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateAppraisal {
-  onUpdateAppraisal {
-    id
-    name
-    photosCar {
-      items {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    photosDocs {
-      items {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteAppraisal {
-  onDeleteAppraisal {
-    id
-    name
-    photosCar {
-      items {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    photosDocs {
-      items {
-        id
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreatePhoto {
-  onCreatePhoto {
-    id
-    url
-    photosCar {
-      id
-      name
-      photosCar {
-        nextToken
-      }
-      photosDocs {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    photosDocs {
-      id
-      name
-      photosCar {
-        nextToken
-      }
-      photosDocs {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdatePhoto {
-  onUpdatePhoto {
-    id
-    url
-    photosCar {
-      id
-      name
-      photosCar {
-        nextToken
-      }
-      photosDocs {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    photosDocs {
-      id
-      name
-      photosCar {
-        nextToken
-      }
-      photosDocs {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeletePhoto {
-  onDeletePhoto {
-    id
-    url
-    photosCar {
-      id
-      name
-      photosCar {
-        nextToken
-      }
-      photosDocs {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    photosDocs {
-      id
-      name
-      photosCar {
-        nextToken
-      }
-      photosDocs {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreatePhotoCar {
-  onCreatePhotoCar {
-    id
-    url
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdatePhotoCar {
-  onUpdatePhotoCar {
-    id
-    url
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeletePhotoCar {
-  onDeletePhotoCar {
-    id
-    url
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateAppraisalB {
-  onCreateAppraisalB {
-    id
-    name
-    photos {
-      items {
-        id
-        appraisalBID
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateAppraisalB {
-  onUpdateAppraisalB {
-    id
-    name
-    photos {
-      items {
-        id
-        appraisalBID
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteAppraisalB {
-  onDeleteAppraisalB {
-    id
-    name
-    photos {
-      items {
-        id
-        appraisalBID
-        url
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreatePhotoB {
-  onCreatePhotoB {
-    id
-    appraisalBID
-    url
-    appraisalB {
-      id
-      name
-      photos {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdatePhotoB {
-  onUpdatePhotoB {
-    id
-    appraisalBID
-    url
-    appraisalB {
-      id
-      name
-      photos {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeletePhotoB {
-  onDeletePhotoB {
-    id
-    appraisalBID
-    url
-    appraisalB {
-      id
-      name
-      photos {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
 subscription OnCreateAppraisalC {
   onCreateAppraisalC {
     id
     name
-    photos {
+    photos_cars {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photos_docs {
       items {
         id
         url
@@ -356,7 +59,16 @@ subscription OnUpdateAppraisalC {
   onUpdateAppraisalC {
     id
     name
-    photos {
+    photos_cars {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photos_docs {
       items {
         id
         url
@@ -373,7 +85,16 @@ subscription OnDeleteAppraisalC {
   onDeleteAppraisalC {
     id
     name
-    photos {
+    photos_cars {
+      items {
+        id
+        url
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    photos_docs {
       items {
         id
         url
@@ -393,7 +114,10 @@ subscription OnCreatePhotoC {
     appraisal {
       id
       name
-      photos {
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
         nextToken
       }
       createdAt
@@ -410,7 +134,10 @@ subscription OnUpdatePhotoC {
     appraisal {
       id
       name
-      photos {
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
         nextToken
       }
       createdAt
@@ -427,7 +154,10 @@ subscription OnDeletePhotoC {
     appraisal {
       id
       name
-      photos {
+      photos_cars {
+        nextToken
+      }
+      photos_docs {
         nextToken
       }
       createdAt
