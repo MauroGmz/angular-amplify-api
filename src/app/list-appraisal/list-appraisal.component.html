@@ -1,1 +1,9 @@
-<p>list-appraisal works!</p>
+<div *ngFor="let appraisal of allAppraisals">
+    <div>{{ appraisal.name }}</div>
+    <div *ngFor="let p of appraisal.photos_cars.items"> 
+        <li>url: {{ p.url }}</li>
+    </div>
+    <div *ngFor="let p of appraisal.photos_docs.items"> 
+        <li>url: {{ p.url }}</li>
+    </div>
+</div>
