@@ -9,6 +9,7 @@ import { Photo } from './../models/photo';
 import { PhotoICar } from './../models/photos';
 import { AppraisalI } from './../models/appraisal';
 
+
 @Component({
   selector: 'app-appraisal',
   templateUrl: './appraisal.component.html',
@@ -51,6 +52,7 @@ export class AppraisalComponent implements OnInit {
       'url': ['', Validators.required]
     });
 
+    
     
     /* fetch appraisals when app loads */
     this._api.ListAppraisalCs().then(data => {

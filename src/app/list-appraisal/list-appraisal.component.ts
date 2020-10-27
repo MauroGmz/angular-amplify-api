@@ -4,6 +4,8 @@ import { ProxyCmp } from '@aws-amplify/ui-angular';
 import { WebApiService } from '../services/web-api.service';
 import { APIService } from './../API.service';
 import { AppraisalI } from './../models/appraisalC';
+import { Storage } from 'aws-amplify';
+
 
 
 @Component({
@@ -16,6 +18,7 @@ export class ListAppraisalComponent implements OnInit {
   appraisalID: any;
   appraisals: Array<any>;
   allAppraisals: any[] = [];
+  result: any;
 
   constructor(private _api: WebApiService, private router: Router) { }
 
@@ -35,6 +38,16 @@ export class ListAppraisalComponent implements OnInit {
       this.appraisalID = element.id;
       await this.getAppraisal(this.appraisalID)
     }
+    console.log("all appraisals:")
+    console.log(this.allAppraisals)
+    await Storage.put('test1.txt', 'Hello')
+    .then (result => this.result = result) // {key: "test.txt"}
+    .catch(err => console.log(err));
+    console.log(this.result);
+    var urlLink = 'https://angularamplifyapib604cc9402a74f528386f29ce8c332173902-dev.s3.amazonaws.com/public/'+this.result.key;
+    console.log(urlLink);
+    
+  
 
   }
 
