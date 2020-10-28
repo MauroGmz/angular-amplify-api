@@ -6,7 +6,7 @@ import { APIService } from './../API.service';
 import { AppraisalI } from './../models/appraisalC';
 import { Storage } from 'aws-amplify';
 
-
+import { url } from "./../../aws-exports";
 
 @Component({
   selector: 'app-list-appraisal',
@@ -14,6 +14,8 @@ import { Storage } from 'aws-amplify';
   styleUrls: ['./list-appraisal.component.scss']
 })
 export class ListAppraisalComponent implements OnInit {
+
+  link = url;
 
   appraisalID: any;
   appraisals: Array<any>;
@@ -44,7 +46,7 @@ export class ListAppraisalComponent implements OnInit {
     .then (result => this.result = result) // {key: "test.txt"}
     .catch(err => console.log(err));
     console.log(this.result);
-    var urlLink = 'https://angularamplifyapib604cc9402a74f528386f29ce8c332173902-dev.s3.amazonaws.com/public/'+this.result.key;
+    var urlLink = this.link + this.result.key;
     console.log(urlLink);
     
   
