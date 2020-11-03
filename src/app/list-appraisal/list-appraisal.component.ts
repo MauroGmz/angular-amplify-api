@@ -30,11 +30,6 @@ export class ListAppraisalComponent implements OnInit {
       this.appraisals = event.items;
       console.log(this.appraisals);
       
-      /* this.appraisals.forEach((element) => {
-        this.appraisalID = element.id;
-        this.getAppraisal(this.appraisalID)
-      });
-      console.log(this.allAppraisals) */
     });
     for (let element of this.appraisals) {
       this.appraisalID = element.id;
