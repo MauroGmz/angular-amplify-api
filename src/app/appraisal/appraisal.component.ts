@@ -79,16 +79,6 @@ export class AppraisalComponent implements OnInit {
     });
   }
 
-  /* getAppraisals():Promise<any>{
-		try{
-			return this._api.GetAppraisalC(this.appraisalBID);
-		}
-		catch(error){
-			return error;
-
-		}
-	} */
-
   public onCreateName(N) {
     console.log(N.name);
     this.name = N.name;
